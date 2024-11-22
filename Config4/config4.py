@@ -41,11 +41,9 @@ def assembler(input_file, output_file, log_file):
             print(f"Error in input file: {e}")
             return
 
-    # Write binary output
     with open(output_file, 'wb') as f:
         f.write(bytearray(bc))
 
-    # Write log file as YAML
     with open(log_file, 'w') as f:
         yaml.dump({"log": log_entries}, f, default_flow_style=False)
 

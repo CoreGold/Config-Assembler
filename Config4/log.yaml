@@ -1,0 +1,4 @@
+log:
+- loadc a=55 b=255
+- bswap a=33
+- write a=61 b=5

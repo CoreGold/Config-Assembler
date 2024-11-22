@@ -21,9 +21,80 @@ bswap a: Меняет порядок байт в аккумуляторе.
 Для работы программы необходимы библиотека PyYaml и Python 11
 
 ### Ассемблер
-'''
+```
 python main.py assemble <input_file> <output_file> <log_file>
-'''
+```
 * <input_file>: Файл с командами на "ассемблере".
 * <output_file>: Файл для сохранения машинного кода.
 * <log_file>: Файл для сохранения лога операций в формате YAML.
+### Интерпретатор
+```
+python main.py interpret <input_file> <output_file> <start_mem> <end_mem>
+```
+* <input_file>: Файл с машинным кодом.
+* <output_file>: Файл для сохранения состояния памяти в формате YAML.
+* <start_mem> и <end_mem>: Диапазон адресов памяти для вывода.
+
+### Формат входных данных
+```
+('loadc', 0, 234)
+('bswap', 0)
+('write', 0, 10)
+```
+
+## Тестирование
+
+Входной файл input.txt
+```
+('loadc', 55, 234)
+('write', 61, 10)
+('loadc', 55, 10)
+('read', 57)
+('bswap', 33)
+('write', 61, 5)
+```
+Аргументы для ассемблера
+```
+python config4.py assemble input.txt output.bin log.yaml
+```
+Лог файл в формат yaml
+```
+log:
+- loadc a=55 b=234
+- write a=61 b=10
+- loadc a=55 b=10
+- read a=57
+- bswap a=33
+- write a=61 b=5
+```
+
+Аргументы для интерпретера
+```
+python config4.py interpret output.bin result.yaml 0 10
+```
+
+Результат работы интерпретера в формате yaml
+```
+memory:
+  address_0: 0
+  address_1: 0
+  address_2: 0
+  address_3: 0
+  address_4: 0
+  address_5: 3925868544
+  address_6: 0
+  address_7: 0
+  address_8: 0
+  address_9: 0
+  address_10: 234
+```
+Готовые тесты каждой команды представлены в файле TestAssembler.py
+
+# Тестовая программа
+Программа представлена в файле TestProgram
+
+Программа получает на вход массив: 1 2 3 4 5 6 7 8
+
+Команда bswap посимвольно применяется к каждому элементу массива
+
+По завершению работы возвращается массив: 16777216 33554432 50331648 67108864 83886080 100663296 117440512 134217728 

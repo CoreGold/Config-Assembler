@@ -1,4 +1,7 @@
 log:
-- loadc a=55 b=5
+- loadc a=55 b=234
+- write a=61 b=10
+- loadc a=55 b=10
+- read a=57
 - bswap a=33
 - write a=61 b=5

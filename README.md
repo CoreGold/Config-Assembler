@@ -22,14 +22,14 @@ bswap a: Меняет порядок байт в аккумуляторе.
 
 ### Ассемблер
 ```
-python main.py assemble <input_file> <output_file> <log_file>
+python config4.py assemble <input_file> <output_file> <log_file>
 ```
 * <input_file>: Файл с командами на "ассемблере".
 * <output_file>: Файл для сохранения машинного кода.
 * <log_file>: Файл для сохранения лога операций в формате YAML.
 ### Интерпретатор
 ```
-python main.py interpret <input_file> <output_file> <start_mem> <end_mem>
+python config4.py interpret <input_file> <output_file> <start_mem> <end_mem>
 ```
 * <input_file>: Файл с машинным кодом.
 * <output_file>: Файл для сохранения состояния памяти в формате YAML.

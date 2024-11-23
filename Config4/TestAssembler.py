@@ -1,7 +1,5 @@
-import os
 import yaml
 import unittest
-import tempfile
 from config4 import assembler, serializer
 
 
@@ -19,8 +17,7 @@ class TestAssembler(unittest.TestCase):
 
         with open('test_output.bin', 'rb') as f:
             output_content = f.read()
-            expected_output = serializer(55, ((397, 6),), 3)
-            self.assertEqual(output_content, expected_output)
+            self.assertEqual(output_content, bytes([0x77, 0x63, 0x00]))
 
     def test_read(self):
         file = open('test_input.txt', 'w')
@@ -35,8 +32,7 @@ class TestAssembler(unittest.TestCase):
 
         with open('test_output.bin', 'rb') as f:
             output_content = f.read()
-            expected_output = serializer(57, ((57, 0),), 3)
-            self.assertEqual(output_content, expected_output)
+            self.assertEqual(output_content, bytes([0x39, 0x00, 0x00]))
 
     def test_write(self):
         file = open('test_input.txt', 'w')
@@ -51,8 +47,7 @@ class TestAssembler(unittest.TestCase):
 
         with open('test_output.bin', 'rb') as f:
             output_content = f.read()
-            expected_output = serializer(61, ((685, 6),), 3)
-            self.assertEqual(output_content, expected_output)
+            self.assertEqual(output_content, bytes([0x7D, 0xAB, 0x00]))
 
     def test_bswap(self):
         file = open('test_input.txt', 'w')
@@ -67,8 +62,7 @@ class TestAssembler(unittest.TestCase):
 
         with open('test_output.bin', 'rb') as f:
             output_content = f.read()
-            expected_output = serializer(33, ((33, 0),), 3)
-            self.assertEqual(output_content, expected_output)
+            self.assertEqual(output_content, bytes([0x21, 0x00, 0x00]))
 
 
 if __name__ == '__main__':

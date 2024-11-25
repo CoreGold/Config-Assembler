@@ -1,12 +1,11 @@
 memory:
-  address_0: 0
-  address_1: 167772160
+  address_1: 10
   address_10: 0
-  address_2: 335544320
-  address_3: 503316480
-  address_4: 671088640
-  address_5: 838860800
-  address_6: 1006632960
-  address_7: 1174405120
-  address_8: 1342177280
+  address_2: 20
+  address_3: 30
+  address_4: 40
+  address_5: 50
+  address_6: 60
+  address_7: 70
+  address_8: 80
   address_9: 0
